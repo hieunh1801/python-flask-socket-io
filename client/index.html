@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket IO demo</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+        integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        const url = "http://171.244.51.223:5000/"
+        var socket = io(url);
+        socket.on('connect', function () {
+            socket.emit('login', { user_id: 1, message: "Hello server tao la Hieu day" });
+        });
+        socket.on("require_logout", function () {
+            console.log("Logout ra nhe may oi")
+        })
+        socket.on("client-cover", function (data) {
+            console.log("Server access", data)
+        })
+    </script>
+</head>
+
+<body>
+    <h2>Socket IO demo</h2>
+</body>
+
+</html>
